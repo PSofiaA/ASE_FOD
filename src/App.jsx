@@ -1,10 +1,10 @@
 import './assets/main.css';
-import Header from "./components/Header.jsx";
-import ChooseFile from "./components/ChooseFile.jsx";
+import Header from "./components/Header/Header.jsx";
+import ChooseFile from "./components/ChooseFile/ChooseFile.jsx";
 import {Routes, Route, Link} from "react-router-dom";
 import Uploady, {useItemProgressListener} from "@rpldy/uploady";
 import UploadButton, { asUploadButton } from "@rpldy/upload-button";
-import ResultPage from "./components/ResultPage.jsx";
+import ResultPage from "./components/ResultPage/ResultPage.jsx";
 
 
 export default function App() {

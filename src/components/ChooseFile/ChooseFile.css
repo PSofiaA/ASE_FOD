@@ -1,0 +1,103 @@
+.chooseFile {
+    cursor: pointer;
+    background: #E5312D;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: white;
+    margin-top: 30px ;
+    width: 193px;
+    height: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 550;
+    line-height: 28px;
+    font-size: 16px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 30px;
+    margin-top: 30px;
+}
+
+.button-container button {
+    display: flex;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0 4px;
+
+}
+
+.splitFile {
+    display: flex;
+    cursor: pointer;
+    background: #E5312D;;
+    border-radius: 10px;
+    color: white;
+    margin-left: 0px;
+    font-weight: 550;
+    font-size: 16px;
+    line-height: 28px;
+    width: 115px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+}
+
+.backButton {
+    background: #47474F;
+    padding: 5px 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+}
+
+
+
+@media (hover:hover) {
+    .splitFile:hover,
+    .chooseFile:hover {
+        background: rgba(171, 42, 42, 0.91);
+    }
+}
+
+@media (hover:none) {
+    .splitFile:hover,
+    .chooseFile:hover {
+    }
+}
+
+.chooseFile:active {
+    background: rgba(171, 42, 42, 0.4);
+}
+
+.splitFile:active {
+    background: rgba(171, 42, 42, 0.4);
+}
+
+.progressBar {
+    display: inherit;
+    width: 300px;
+    border-radius: 100px;
+    height: 5px;
+    justify-self: center;
+}
+
+.state {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px ;
+    padding-bottom: 5px;
+}

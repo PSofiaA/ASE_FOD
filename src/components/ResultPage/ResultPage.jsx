@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import "../assets/MainContent.css"
-import "../assets/ResultPage.css"
+import "../../assets/MainContent.css"
+import "./ResultPage.css"
 import axios from 'axios'
 
 const ListDocuments = [

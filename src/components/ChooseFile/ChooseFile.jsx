@@ -1,4 +1,4 @@
-import '../assets/MainContent.css'
+import './ChooseFile.css'
 
 import React, {useCallback, useEffect, useRef, useState} from "react";
 import Uploady, {useItemProgressListener} from "@rpldy/uploady";
@@ -165,7 +165,9 @@ export default function chooseFile() {
                 <LogProgress/>
                 {upload == 0 ?
                     <>
-                        <UploadButton multiple={false} accept=".pdf" className="chooseFile" >Выбрать PDF файл </UploadButton>
+
+                        <UploadButton  className="chooseFile" >Выбрать PDF файл</UploadButton>
+
                     </> : <></>}
             </Uploady>
 

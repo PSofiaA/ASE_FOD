@@ -1,4 +1,4 @@
-import '../assets/MainContent.css'
+import '../../assets/MainContent.css'
 
 import React, {useEffect} from "react";
 import Uploady, {useItemProgressListener} from "@rpldy/uploady";
