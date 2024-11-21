@@ -1,0 +1,70 @@
+.pageAuth {
+    margin-top: 25dvh;
+    padding-bottom: 20px;
+}
+
+.logoAuth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+
+.text {
+    font-weight: 600;
+    justify-content: center;
+    display: flex;
+    font-size: 18px;
+}
+
+.enter-button {
+    cursor: pointer;
+    background: #E5312D;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-top: 20px ;
+    max-width: 100px;
+    height: 48px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 550;
+    line-height: 28px;
+    font-size: 18px;
+    color: white;
+}
+
+.input-container {
+    max-width: 248px ;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10px;
+}
+
+.margin {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.forget_password {
+    margin-top: 10px;
+    text-decoration: underline;
+    color:  #E5312D;
+    justify-content: center;
+    display: flex;
+    cursor: pointer;
+}
+
+
+.forget_password:active {
+    color: rgba(171, 42, 42, 0.91);
+}
+
+#root Button:hover {
+    background: rgba(171, 42, 42, 0.91);
+}

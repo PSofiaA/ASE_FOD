@@ -12,6 +12,7 @@
   "dependencies": {
     "@rpldy/upload-button": "^1.8.3",
     "@rpldy/uploady": "^1.8.3",
+    "antd": "^5.22.1",
     "axios": "^1.7.7",
     "next": "^15.0.3",
     "rc-progress": "^4.0.0",

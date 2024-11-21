@@ -5,7 +5,8 @@ import {Routes, Route, Link} from "react-router-dom";
 import Uploady, {useItemProgressListener} from "@rpldy/uploady";
 import UploadButton, { asUploadButton } from "@rpldy/upload-button";
 import ResultPage from "./components/ResultPage/ResultPage.jsx";
-
+import AuthPage from "./components/Auth/AuthPage.jsx";
+import {useState} from "react";
 
 export default function App() {
 
@@ -19,7 +20,6 @@ export default function App() {
 
 
 
-
     return (
         <div className='root'>
 
@@ -29,6 +29,7 @@ export default function App() {
 
             {/*<ResultPage/>*/}
 
+            <AuthPage/>
         </div>
     )
 }
