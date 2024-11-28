@@ -6,7 +6,7 @@ import UploadButton, {asUploadButton} from "@rpldy/upload-button";
 import { Line } from "rc-progress";
 import "@rpldy/sender";
 import axios from "axios";
-
+import Header from "../Header/Header.jsx";
 
 export default function chooseFile() {
 
@@ -23,7 +23,7 @@ export default function chooseFile() {
 
     const downloadFile = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/download', {
+            const response = await axios.get('http://localhost:8080/download/stream', {
                 responseType: 'blob', // Указываем, что ожидаем ответ в формате blob
             });
             const url = window.URL.createObjectURL(new Blob([response.data]));
@@ -86,14 +86,12 @@ export default function chooseFile() {
     const LogProgress = () => {
 
         const [progress, setProgress] = React.useState(0);
-
         const progressData = useItemProgressListener((item) => {
 
             if (item.file.type !== "application/pdf") {
                 console.error('PDF ONLY');
                 alert('Принимаются только PDF файлы');
             }
-
 
             if (item.file.type == "application/pdf") {
 
@@ -117,7 +115,6 @@ export default function chooseFile() {
                 }
             }
 
-
             return (
                 progressData && (
                     <Line
@@ -135,13 +132,13 @@ export default function chooseFile() {
                     />
                 )
             );
-
         });
-
     }
 
+        return (
+<>
 
-    return (
+    <Header></Header>
         <div className="main-content">
 
             <div className="title"> Разделить документ</div>
@@ -184,7 +181,7 @@ export default function chooseFile() {
             }
 
         </div>
-
+</>
     );
 }
 

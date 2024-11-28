@@ -7,6 +7,9 @@ import UploadButton, { asUploadButton } from "@rpldy/upload-button";
 import ResultPage from "./components/ResultPage/ResultPage.jsx";
 import AuthPage from "./components/Auth/AuthPage.jsx";
 import {useState} from "react";
+import {ProtectedRoute} from "./hooks/ProtectedRoute.jsx";
+import {AuthProvider} from "./hooks/useAuth.jsx";
+
 
 export default function App() {
 
@@ -22,14 +25,17 @@ export default function App() {
 
     return (
         <div className='root'>
+            <AuthProvider>
+            <Routes>
+               <Route path="/login" element={<AuthPage/>} ></Route>
+                <Route path="/" element={
+                    <ProtectedRoute>
+                        <ChooseFile></ChooseFile>
+                    </ProtectedRoute>
+                } />
+            </Routes>
+            </AuthProvider>
 
-            <Header/>
-
-            <ChooseFile/>
-
-            {/*<ResultPage/>*/}
-
-            <AuthPage/>
         </div>
     )
 }

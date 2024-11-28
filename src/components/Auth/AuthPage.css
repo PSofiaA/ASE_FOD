@@ -27,8 +27,8 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    margin-top: 20px ;
-    max-width: 100px;
+    margin-top: 10px ;
+    min-width: 100px;
     height: 48px;
     margin-left: auto;
     margin-right: auto;
@@ -47,17 +47,34 @@
 }
 
 .margin {
+    margin-top: 10px;
     margin-bottom: 10px;
     display: flex;
+    justify-content: center;
+    justify-items: center;
+    color: #707078;
+    }
+
+.instruction {
+    margin-top: 15px;
+    text-align: center;
+    max-width: 300px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 20px;
+    color: black;
 }
 
+
 .forget_password {
-    margin-top: 10px;
+    /*margin-top: 10px;*/
     text-decoration: underline;
     color:  #E5312D;
     justify-content: center;
     display: flex;
     cursor: pointer;
+    margin-left: 10px;
 }
 
 

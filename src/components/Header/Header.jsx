@@ -1,7 +1,16 @@
 import './Header.css';
+import {useAuth} from "../../hooks/useAuth.jsx";
+
+
 
 
 export default function Header() {
+    const {logout} = useAuth()
+
+    const handleLogout = () => {
+        logout()
+    }
+
     return (
         <div className='Header'>
 
@@ -9,7 +18,7 @@ export default function Header() {
 
             <div className="title">Фабрика оцифровки документов</div>
 
-            <div className="exit"> Выйти</div>
+            <div className="exit" onClick={handleLogout}> Выйти</div>
         </div>
     )
 }
