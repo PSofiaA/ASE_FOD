@@ -29,7 +29,7 @@ export default function chooseFile() {
             const url = window.URL.createObjectURL(new Blob([response.data]));
             const link = document.createElement('a');
             link.href = url;
-            link.setAttribute('download', 'file');
+            link.setAttribute('download', 'result.zip');
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
@@ -40,49 +40,49 @@ export default function chooseFile() {
     };
 
 
-    const processing = () => {
-        useEffect(() => {
-            const fetchData = async () => {
-                try {
-                    const response = await
-                        axios.post('http://localhost:3000/splitFile');
-                    // setDocuments(response.data);
-                } catch (err) {
-                    setError(err.message);
-                } finally {
-                    setLoading(false)
-                }
-            };
-            fetchData();
-
-        }, []);
-
-        if (loading) {
-            return <div className="title">Выполняется обработка...</div>
-        }
-
-        if (error) {
-            return <div className="title">Ошибка: {error}</div>
-        }
-
-        return (
-            <div className="main-content">
-                <div className="title">Документ разделен!</div>
-                <div className="documents-area">
-                    <div className="document-info">
-                        <div className="document-header">
-                            <span> Название дока</span>
-                            <div className="download">Скачать</div>
-                        </div>
-                        <p>Код KKS: <span>kks_code</span></p>
-                        <p>Тип работ: <span>type_work</span></p>
-                        <p>Тип документа: <span>type_document</span></p>
-                        <p>Версия документа: <span> version_document</span></p>
-                    </div>
-                </div>
-            </div>
-        )
-    }
+    // const processing = () => {
+    //     useEffect(() => {
+    //         const fetchData = async () => {
+    //             try {
+    //                 const response = await
+    //                     axios.post('http://localhost:3000/splitFile');
+    //                 // setDocuments(response.data);
+    //             } catch (err) {
+    //                 setError(err.message);
+    //             } finally {
+    //                 setLoading(false)
+    //             }
+    //         };
+    //         fetchData();
+    //
+    //     }, []);
+    //
+    //     if (loading) {
+    //         return <div className="title">Выполняется обработка...</div>
+    //     }
+    //
+    //     if (error) {
+    //         return <div className="title">Ошибка: {error}</div>
+    //     }
+    //
+    //     return (
+    //         <div className="main-content">
+    //             <div className="title">Документ разделен!</div>
+    //             <div className="documents-area">
+    //                 <div className="document-info">
+    //                     <div className="document-header">
+    //                         <span> Название дока</span>
+    //                         <div className="download">Скачать</div>
+    //                     </div>
+    //                     <p>Код KKS: <span>kks_code</span></p>
+    //                     <p>Тип работ: <span>type_work</span></p>
+    //                     <p>Тип документа: <span>type_document</span></p>
+    //                     <p>Версия документа: <span> version_document</span></p>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     )
+    // }
     const LogProgress = () => {
 
         const [progress, setProgress] = React.useState(0);
@@ -93,7 +93,7 @@ export default function chooseFile() {
                 alert('Принимаются только PDF файлы');
             }
 
-            if (item.file.type == "application/pdf") {
+            if (item.file.type === "application/pdf") {
 
                 if (progressData && progressData.completed > progress) {
                     setProgress(() => progressData.completed)
@@ -110,7 +110,7 @@ export default function chooseFile() {
                 setFileSize((item?.file.size / 1024).toFixed(2));
                 setSizeUnit('KB');
 
-                if (item.completed == 100) {
+                if (item.completed === 100) {
                     setUpload(2)
                 }
             }
@@ -143,7 +143,7 @@ export default function chooseFile() {
 
             <div className="title"> Разделить документ</div>
 
-            {upload == 0 ?
+            {upload === 0 ?
                 <>
                     <div className="description"> Выберите отсканированый документ и
                         система разделит его по QR-коду!
@@ -151,16 +151,16 @@ export default function chooseFile() {
                 </> : null}
 
 
-            {upload == 1 ? <>
+            {upload === 1 ? <>
                 <div className="state"> Загрузка...</div>
                 <div className="description"> {fileName} ({fileSize} {sizeUnit})</div>
             </> : null}
 
 
             <Uploady
-                destination={{url: "http://localhost:3000/upload"}}>
+                destination={{url: "http://localhost:3000/upload3"}}>
                 <LogProgress/>
-                {upload == 0 ?
+                {upload === 0 ?
                     <>
 
                         <UploadButton  className="chooseFile" >Выбрать PDF файл</UploadButton>
@@ -169,7 +169,7 @@ export default function chooseFile() {
             </Uploady>
 
 
-            {upload == 2 ?
+            {upload === 2 ?
                 <>
                     <div className="description"> {fileName} ({fileSize} {sizeUnit})</div>
                     <div className="button-container">
