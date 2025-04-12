@@ -82,5 +82,10 @@ export const ProtectedRoute = ({ children }) => {
         // user is not authenticated
         return <Navigate to="/login" />;
     }
+    // if ({user} !== null) {
+    //     return <Navigate to="/" />
+    // }
     return children;
+
+
 };

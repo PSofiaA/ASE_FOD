@@ -21,12 +21,8 @@ export default function AuthPage() {
     const { login } = useAuth();
     const handleLogin = async (e) => {
         e.preventDefault();
-        // const hashedPass = bcrypt.hash(password)
-        // console.log(hashedPass)
-
-        const hashPass = '$2a$10$0xItN8rv2yCqDfdbofAo5O0wFz78VeKNiFe9k.K3w9t.7Xap.nxoC'
-        if (username === "user" && (bcrypt.compareSync(password, hashPass))===true) {
-            // Replace with actual authentication logic
+        const hashPass = process.env.VITE_HASH_PASS
+        if (username === process.env.VITE_USERNAME && (bcrypt.compareSync(password, hashPass))===true) {
             await login({ username })
         } else {
             alert("Неправильный логин или пароль");

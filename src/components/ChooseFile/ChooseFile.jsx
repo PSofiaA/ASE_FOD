@@ -1,12 +1,13 @@
 import './ChooseFile.css'
 
-import React, {useCallback, useEffect, useRef, useState} from "react";
-import Uploady, {useItemProgressListener} from "@rpldy/uploady";
-import UploadButton, {asUploadButton} from "@rpldy/upload-button";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import Uploady, { useItemProgressListener } from "@rpldy/uploady";
+import UploadButton, { asUploadButton } from "@rpldy/upload-button";
 import { Line } from "rc-progress";
 import "@rpldy/sender";
 import axios from "axios";
 import Header from "../Header/Header.jsx";
+import UploadDropZone from "@rpldy/upload-drop-zone";
 
 export default function chooseFile() {
 
@@ -135,53 +136,53 @@ export default function chooseFile() {
         });
     }
 
-        return (
-<>
+    return (
+        <>
 
-    <Header></Header>
-        <div className="main-content">
+            <Header></Header>
+            <div className="main-content">
 
-            <div className="title"> Разделить документ</div>
+                <div className="title"> Разделить документ</div>
 
-            {upload === 0 ?
-                <>
-                    <div className="description"> Выберите отсканированый документ и
-                        система разделит его по QR-коду!
-                    </div>
+                {upload === 0 ?
+                    <>
+                        <div className="description"> Выберите отсканированый документ и
+                            система разделит его по QR-коду!
+                        </div>
+                    </> : null}
+
+
+                {upload === 1 ? <>
+                    <div className="state"> Загрузка...</div>
+                    <div className="description"> {fileName} ({fileSize} {sizeUnit})</div>
                 </> : null}
 
 
-            {upload === 1 ? <>
-                <div className="state"> Загрузка...</div>
-                <div className="description"> {fileName} ({fileSize} {sizeUnit})</div>
-            </> : null}
+                <Uploady
+                    destination={{ url: "http://localhost:3000/upload" }}>
+                    <LogProgress />
+                    {upload === 0 ?
+                        <>
+                            <UploadDropZone>
+                                <UploadButton className="chooseFile" >Выбрать PDF файл</UploadButton>
+                            </UploadDropZone>
+                        </> : <></>}
+                </Uploady>
 
 
-            <Uploady
-                destination={{url: "http://localhost:3000/upload3"}}>
-                <LogProgress/>
-                {upload === 0 ?
+                {upload === 2 ?
                     <>
+                        <div className="description"> {fileName} ({fileSize} {sizeUnit})</div>
+                        <div className="button-container">
+                            <button onClick={resetUpload} className="backButton">←
+                            </button>
+                            <button onClick={downloadFile} className="splitFile">Разделить</button>
+                        </div>
+                    </> : null
+                }
 
-                        <UploadButton  className="chooseFile" >Выбрать PDF файл</UploadButton>
-
-                    </> : <></>}
-            </Uploady>
-
-
-            {upload === 2 ?
-                <>
-                    <div className="description"> {fileName} ({fileSize} {sizeUnit})</div>
-                    <div className="button-container">
-                        <button onClick={resetUpload} className="backButton">←
-                        </button>
-                        <button onClick={downloadFile} className="splitFile">Разделить</button>
-                    </div>
-                </> : null
-            }
-
-        </div>
-</>
+            </div>
+        </>
     );
 }
 
