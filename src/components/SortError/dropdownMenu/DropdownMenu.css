@@ -1,0 +1,21 @@
+.dropdownMenu {
+    width: 248px;
+    height: 28px;
+}
+
+.dropdownButton {
+    display: flex;
+    flex-direction: row;
+    color: #bfbfbf;
+    justify-content: space-between;
+}
+
+.dropdownPlaceholder {
+    color: #bfbfbf;
+    /* светло-серый */
+}
+
+.dropdownLabel {
+    color: #000;
+    /* тёмный для выбранного */
+}

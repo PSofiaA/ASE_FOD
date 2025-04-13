@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "dev1": "node --env-file=.env vite",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -12,13 +13,16 @@
   "dependencies": {
     "@ant-design/icons": "^5.5.1",
     "@rpldy/upload-button": "^1.8.3",
+    "@rpldy/upload-drop-zone": "^1.8.3",
     "@rpldy/uploady": "^1.8.3",
     "antd": "^5.22.1",
     "axios": "^1.7.7",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.7",
     "js-cookie": "^3.0.5",
     "next": "^15.0.3",
+    "pdfjs-dist": "^5.1.91",
     "rc-progress": "^4.0.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -30,7 +34,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.2",
     "eslint": "^9.11.1",
-    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.1.0-rc.0",
     "eslint-plugin-react-refresh": "^0.4.12",
     "globals": "^15.9.0",

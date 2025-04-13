@@ -7,13 +7,13 @@ dotenv.config()
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-
+  publicDir: 'public',
   define: {
-    'process.env' : {
+    'process.env': {
       VITE_HASH_PASS:
-      process.env.VITE_HASH_PASS,
+        process.env.VITE_HASH_PASS,
       VITE_USERNAME:
-      process.env.VITE_USERNAME,
+        process.env.VITE_USERNAME,
     },
   },
 })
