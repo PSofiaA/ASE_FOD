@@ -6,12 +6,20 @@
     justify-content: flex-start;
     align-items: center;
     overflow: hidden;
-    /* position: relative; */
+    padding: 0 10px;
+}
+
+.pdfContainer.landscape {
+    max-width: 750px;
+}
+
+.pdfContainer.portrait {
+    max-width: 500px;
 }
 
 canvas {
     max-width: 100%;
-    max-height: calc(100% - 54px);
+    max-height: 100%;
     object-fit: contain;
 }
 

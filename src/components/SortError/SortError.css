@@ -23,6 +23,7 @@
     display: flex;
     flex-direction: row;
     gap: 16px;
+    margin: 30px 0;
 }
 
 .errorBlockMenuCol {
@@ -36,9 +37,9 @@
 
 .errorBlockPageCol {
     /* border: 1px solid red; */
-    width: 400px;
+    /* width: 400px; */
+    max-width: 700px;
     padding: 0 10px;
-    /* height: 600px */
 }
 
 .errorMessageBlock {
@@ -81,7 +82,7 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    /* align-items: center; */
     gap: 10px;
 }
 
@@ -100,6 +101,7 @@
     justify-content: space-between;
     gap: 10px;
     width: 360px;
+    padding-left: 10px;
 }
 
 .selectProp {
@@ -122,4 +124,30 @@
 .selectInput {
     width: 198px;
     height: 28px;
+}
+
+.baseButton {
+    height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    background-color: #707078;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.navBlock {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 30px;
+}
+
+#highlighted {
+    background-color: #C00F0C;
+}
+
+#highlighted:hover {
+    background-color: #707078;
+    color: #FFFFFF;
 }

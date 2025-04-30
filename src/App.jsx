@@ -36,7 +36,7 @@ import { AuthProvider } from "./hooks/useAuth.jsx";
 //
 //
 
-
+let page, setPage, errorInfo, setErrorInfo;
 
 const delay = 3600000;
 function clearLocalStorageAndRedirect() {
@@ -72,7 +72,13 @@ setInterval(() => {
 
 
 export default function App() {
+    const [pageState, setPageState] = useState("choose");
+    const [errorInfoState, setErrorInfoState] = useState(null);
 
+    page = pageState;
+    setPage = setPageState;
+    errorInfo = errorInfoState;
+    setErrorInfo = setErrorInfoState;
     return (
         <div className='root'>
             <AuthProvider>
@@ -81,8 +87,12 @@ export default function App() {
                     <Route path="/login" element={<AuthPage />} ></Route>
                     <Route path="/" element={
                         <ProtectedRoute>
-                            <SortError></SortError>
-                            {/* <ChooseFile></ChooseFile> */}
+                            {page === "choose" && <ChooseFile onError={(errorData) => {
+                                setErrorInfo(errorData);
+                                setPage("error");
+                            }} />}
+
+                            {page === "error" && <SortError errorInfo={errorInfo} />}
                         </ProtectedRoute>
                     } />
                 </Routes>

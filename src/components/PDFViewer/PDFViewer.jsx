@@ -1,20 +1,24 @@
 
 import * as PDFJS from "pdfjs-dist";
 import './PDFViewer.css'
-import { useCallback, useRef, useState, useEffect } from "react";
+import { useCallback, useRef, useState, useEffect, useImperativeHandle, forwardRef } from "react";
 import { Button, Tag } from "antd";
 import { CaretRightOutlined, CaretLeftOutlined } from "@ant-design/icons";
 
-export default function PdfJs() {
-    PDFJS.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
-
-    const src = "../public/testPDF.pdf";
-
+const PdfJs = forwardRef(function PdfJs(_props, ref) {
+    const [isLandscape, setIsLandscape] = useState(false);
     const canvasRef = useRef(null);
     const [pdfDoc, setPdfDoc] = useState();
     const [currentPage, setCurrentPage] = useState(1);
 
+    PDFJS.GlobalWorkerOptions.workerSrc = "/pdf.worker.mjs";
+
+    const src = "../public/testPDF.pdf";
     let renderTask;
+
+    useImperativeHandle(ref, () => ({
+        currentPage, // чтобы прокинуть текущую страницу в родительский компонент
+    }));
 
     const renderPage = useCallback(
         (pageNum, pdf = pdfDoc) => {
@@ -26,9 +30,10 @@ export default function PdfJs() {
             pdf
                 .getPage(pageNum)
                 .then((page) => {
-                    const viewport = page.getViewport({ scale: 1.5 });
+                    const viewport = page.getViewport({ scale: 3.5 });
                     canvas.height = viewport.height;
                     canvas.width = viewport.width;
+                    setIsLandscape(viewport.width > viewport.height);
                     const renderContext = {
                         canvasContext: canvas.getContext("2d"),
                         viewport: viewport,
@@ -69,7 +74,7 @@ export default function PdfJs() {
     const prevPage = () => currentPage > 1 && setCurrentPage(currentPage - 1);
 
     return (
-        <div className="pdfContainer">
+        <div className={`pdfContainer ${isLandscape ? 'landscape' : 'portrait'}`} >
             <canvas ref={canvasRef}></canvas>
             <div className="nav-buttons">
                 <Button
@@ -87,6 +92,8 @@ export default function PdfJs() {
                 />
 
             </div>
-        </div>
+        </ div >
     );
-}
+})
+
+export default PdfJs;
