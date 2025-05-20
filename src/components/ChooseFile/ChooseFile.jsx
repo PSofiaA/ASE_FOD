@@ -18,6 +18,22 @@ export default function chooseFile() {
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
 
+    const onUploadComplete = async (result) => {
+        // result.items — массив загруженных файлов с ответом от сервера в item.uploadResponse
+
+        if (result.items && result.items.length > 0) {
+            // возьмем ответ с сервера по первому файлу (у тебя single upload)
+            const serverResponse = result.items[0].uploadResponse?.data;
+
+            if (serverResponse) {
+                onError({
+                    errorFiles: serverResponse.errorFiles || [],
+                    qrTypes: serverResponse.qrTypes || []
+                });
+            }
+        }
+    };
+
     const resetUpload = useCallback(() => {
         setUpload(0)
     }, [setUpload])
@@ -160,6 +176,7 @@ export default function chooseFile() {
 
                 <Uploady
                     destination={{ url: "http://localhost:3000/upload" }}>
+                    onUploadComplete={onUploadComplete}
                     <LogProgress />
                     {upload === 0 ?
                         <>
